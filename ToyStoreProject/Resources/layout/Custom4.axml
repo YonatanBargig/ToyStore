@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+//אקסמל שמציג את התכונות של הצעצוע 
+<ImageView
+android:layout_width="50dp"
+android:layout_height="50dp"
+android:id="@+id/ivProduct" />
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/tvName"
+android:textSize="20dp"
+android:text="Name"
+android:layout_marginTop="5dp"
+android:layout_marginLeft="10dp"
+android:textColor="#0e82f5" 
+android:fontFamily="casual"/>
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/tvAge"
+android:textSize="20dp"
+android:text="Age"
+android:layout_marginTop="5dp"
+android:layout_marginLeft="10dp"
+android:textColor="#6ef50e" 
+android:fontFamily="casual"/>
+</LinearLayout>
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/tvPrice"
+android:textColor="#dc130c"
+android:textSize="30sp"
+android:text="100$"
+android:gravity="right"
+android:layout_marginRight="20dp"
+android:layout_marginTop="5dp"
+android:fontFamily="casual"/>
+</LinearLayout>

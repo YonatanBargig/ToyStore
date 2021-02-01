@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Please select a shoping category"
+		android:textSize="25dp"
+		android:textColor="#000"
+		android:fontFamily="casual"/>
+	<Button
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:text="SPORT TOY"
+		android:textSize="30sp"
+		android:textColor="#000000"
+		android:id="@+id/btnsporttoy"/>
+	<Button
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:text="WAR TOY"
+		android:textSize="30sp"
+		android:textColor="#000000"
+		android:id="@+id/btnwartoy"/>
+	<Button
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:text="BOX GAMES"
+		android:textSize="30sp"
+		android:textColor="#000000"
+		android:id="@+id/btnsboxgames"/>
+</LinearLayout>
