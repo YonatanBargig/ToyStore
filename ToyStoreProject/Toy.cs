@@ -14,7 +14,7 @@ using SQLite;
 
 namespace ToyStoreProject
 {
-    [Table("toys")]
+   
     public class Toy
     {
         [PrimaryKey, Column("_id")] //מפתח ראשי שמסיפרו עולה באופן אוטומטי על ידי המחשב
@@ -79,7 +79,7 @@ namespace ToyStoreProject
             this.age = age;
         }
 
-        //public string Tostring();
+        
         
     }
 

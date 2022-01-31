@@ -13,40 +13,29 @@ using SQLite;
 
 namespace ToyStoreProject
 {
-    [Table("Toys")]
-    class ToySql
+    [Table("ToySql")]
+   public class ToySql
     {
         [PrimaryKey, AutoIncrement, Column("_id")]//מפתח ראשי שמסיפרו עולה באופן אוטומטי על ידי המחשב
-        public int Id { get; set; }
-        public int Price { get; set; }
-        public String name { get; set; }
-        public int pic { get; set; }
-        public int age { get; set; }
+        public int Id { get; set; }//idשל מוצר 
+        public int Price { get; set; }//מחיר
+        public string name { get; set; }//שם צעצוע
+        public string pic { get; set; }//תמונה
+        
 
 
-        public ToySql()
+        public ToySql()//פעולה בונה ריקה
         {
 
 
 
         }
-        public ToySql( String Name, int price, int Pic, int Age)
+        public ToySql( String Name, int price, string Pic)//פעולה בונה עם פרמטרים
         {
             name = Name;
             Price = price;
             pic = Pic;
-            age = Age;
-
-
         }
-        public void SetToySql(int id, String Name, int price, int Pic, int Age)
-        {
-            this.Id = id;
-            this.name = Name;
-            this.Price = price;
-            this.pic = Pic;
-            this.age = Age;
-
-        }
+        
     }
 }

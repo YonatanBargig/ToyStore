@@ -46,9 +46,6 @@ namespace ToyStoreProject
         {
             this.maxpart = maxpart;
         }
-        /* public override string Tostring()
-         {
-             return ("boxgame" + this.name + "this price is" + this.price);
-         }*/
+      
     }
 }

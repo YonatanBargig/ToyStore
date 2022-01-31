@@ -10,14 +10,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using ToyStoreProject.Resources.layout;
 
 namespace ToyStoreProject
 {
-    class CartAdapter : BaseAdapter<Toy>
+    class ToyAdapter :BaseAdapter<ToySql>//לוקח רשימה ומחלק אותה לתאים לפי תכונות
     {
         Android.Content.Context context;
-        List<Toy> objects;
-        public CartAdapter(Android.Content.Context context, System.Collections.Generic.List<Toy> objects)
+        List<ToySql> objects;
+        public ToyAdapter(Android.Content.Context context, System.Collections.Generic.List<ToySql> objects)
         {
 
             this.context = context;
@@ -28,7 +29,7 @@ namespace ToyStoreProject
 
 
 
-        public List<Toy> GetList()
+        public List<ToySql> GetList()
 
         {
 
@@ -46,17 +47,15 @@ namespace ToyStoreProject
 
         }
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override View GetView(int position, View convertView, ViewGroup parent)//הפעולה שיוצרת את התאים של הרשימה
         {
-           // LayoutInflater layoutInflater = LayoutInflater.From(context);
-            Android.Views.LayoutInflater layoutInflater = ((CartListActivty)context).LayoutInflater;
+           
+            Android.Views.LayoutInflater layoutInflater = ((ShopingCartActivity)context).LayoutInflater;
 
-            Android.Views.View view = layoutInflater.Inflate(Resource.Layout.Custom4, parent, false);
+            Android.Views.View view = layoutInflater.Inflate(Resource.Layout.Custom4, parent, false);//מנפח את התא
 
             TextView tvTitle = view.FindViewById<TextView>(Resource.Id.tvName);
 
-
-            TextView tvAge = view.FindViewById<TextView>(Resource.Id.tvAge);
 
             TextView tvPrice = view.FindViewById<TextView>(Resource.Id.tvPrice);
 
@@ -65,25 +64,26 @@ namespace ToyStoreProject
             {
                 Toast.MakeText(Application.Context, "num of click" + position, ToastLength.Short).Show();
             };
-            
-                Toy temp = objects[position];
-            
+
+            ToySql temp = objects[position];//שולף את האיבר במקום הפוסישין
+
             if (temp != null)
 
             {
+                //אם התנאי מתקיים אז הוא מקבל ומציג את התכונות
 
-                Bitmap bitmap = Helper.Base64ToBitmap(temp.bitmap);
+                Bitmap bitmap = Helper.Base64ToBitmap(temp.pic);
                 ivProduct.SetImageBitmap(bitmap);
 
-                tvPrice.Text = "" + temp.GetPrice();
+                tvPrice.Text = "" + temp.Price;
 
-                tvTitle.Text = temp.GetName();
+                tvTitle.Text = temp.name;
 
-                tvAge.Text = "" + temp.GetAge();
+                
 
             }
 
-            return view;
+            return view;//מחזיר התא למקום
         }
 
         public override int Count
@@ -94,9 +94,9 @@ namespace ToyStoreProject
 
         }
 
-        
 
-        public override Toy this[int position]
+
+        public override ToySql this[int position]
         {
 
 

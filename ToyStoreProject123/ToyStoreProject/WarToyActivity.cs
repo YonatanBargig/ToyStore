@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.Graphics;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+
+namespace ToyStoreProject
+{
+    [Activity(Label = "WarToyActivity")]
+    public class WarToyActivity : Activity, ListView.IOnItemClickListener, ListView.IOnItemLongClickListener
+    {
+        public static List<WarToy> WarToyList { get; set; }
+
+        WarToyAdapter WarToyAdapter;
+        ListView lv;
+        ImageView iv;
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.WarToy);
+            //int nerf = Resource.Drawable.nerfg;
+           // int sol = Resource.Drawable.sol;
+            //int tank = Resource.Drawable.Tank;
+            Bitmap nerf = Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.nerfg);
+            Bitmap sol = Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.sol);
+            Bitmap tank = Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.Tank);
+            WarToy St1 = new WarToy("Nerf", 100, nerf, 3, "Gun");
+            WarToy St2 = new WarToy("soldiers", 75, sol, 3, "Gun");
+            WarToy St3 = new WarToy("Tank", 50, tank, 3, "Cannon");
+            //phase 2 - add to array list
+            WarToyList = new System.Collections.Generic.List<WarToy>();
+            WarToyList.Add(St1);
+            WarToyList.Add(St2);
+            WarToyList.Add(St3);
+            //phase 3 - create adapter
+            WarToyAdapter = new WarToyAdapter(this, WarToyList);
+            //phase 4 reference to listview
+            iv = FindViewById<ImageView>(Resource.Id.iv);
+
+            lv = FindViewById<ListView>(Resource.Id.lv);
+            lv.Adapter = WarToyAdapter;
+            lv.OnItemClickListener = this;     //update
+            lv.OnItemLongClickListener = this;//delete
+            // Create your application here
+        }
+        public void OnItemClick(AdapterView parent, View view, int position, long id)
+        {
+            Intent intent = new Intent(this, typeof(UpdateActivity));
+            intent.PutExtra("pos1", position);
+            /*Intent intent = new Intent(this, typeof(Open));
+             intent.PutExtra("title", );
+             intent.PutExtra("age", tvAge.Text);
+             intent.PutExtra("pic", ivProduct);
+             intent.PutExtra("price",TvPrice.Text );*/
+            StartActivity(intent);
+        }
+
+        public bool OnItemLongClick(AdapterView parent, View view, int position, long id)
+        {
+            throw new NotImplementedException();
+        }
+
+    }
+}

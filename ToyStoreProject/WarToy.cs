@@ -37,9 +37,6 @@ namespace ToyStoreProject
             this.weapon = weapon;
         }
 
-      /*  public override string Tostring()
-        {
-            return ("WarToy" + this.name + "this price is" + this.price);
-        }*/
+      
     }
 }

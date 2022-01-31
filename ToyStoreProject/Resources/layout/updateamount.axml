@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+	android:background="@drawable/toysto">
     <ImageView
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -42,6 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="calculate"
+		android:background="#00B"
+		android:textColor="#fff"
         android:gravity="center"
         android:id="@+id/btncalculate"/>
     <LinearLayout
@@ -69,10 +72,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="add to my list"
+		android:background="#00B"
+		android:textColor="#fff"
         android:id="@+id/btnaddtomylist"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="cancle"
+		android:textColor="#fff"
+		android:background="#00B"
         android:id="@+id/btncancle"/>
 </LinearLayout>

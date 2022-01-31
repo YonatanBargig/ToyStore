@@ -15,7 +15,7 @@ using SQLite;
 namespace ToyStoreProject.Resources.layout
 {
 
-    class SportToyAdapter : BaseAdapter<SportToy>
+    class SportToyAdapter : BaseAdapter<SportToy>//לוקח רשימה ומחלק אותה לתאים לפי תכונות
     {
         Android.Content.Context context;
         List<SportToy> objects;
@@ -48,12 +48,12 @@ namespace ToyStoreProject.Resources.layout
 
         }
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override View GetView(int position, View convertView, ViewGroup parent)//הפעולה שיוצרת את התאים של הרשימה
         {
-            // LayoutInflater layoutInflater = LayoutInflater.From(context);
+           
             Android.Views.LayoutInflater layoutInflater = ((SportToyActivity)context).LayoutInflater;
 
-            Android.Views.View view = layoutInflater.Inflate(Resource.Layout.Custom1, parent, false);
+            Android.Views.View view = layoutInflater.Inflate(Resource.Layout.Custom1, parent, false);//מנפח את התא
 
             TextView tvTitle = view.FindViewById<TextView>(Resource.Id.tvName);
 
@@ -65,12 +65,12 @@ namespace ToyStoreProject.Resources.layout
 
             ImageView ivProduct = view.FindViewById<ImageView>(Resource.Id.ivProduct);
 
-            SportToy temp = objects[position];
+            SportToy temp = objects[position];//שולף את האיבר במקום הפוסישין
 
             if (temp != null)
 
             {
-
+                //אם התנאי מתקיים אז הוא מקבל ומציג את התכונות
                 Bitmap bitmap = Helper.Base64ToBitmap(temp.bitmap);
                 ivProduct.SetImageBitmap(bitmap);
 
@@ -84,7 +84,7 @@ namespace ToyStoreProject.Resources.layout
 
             }
 
-            return view;
+            return view;//מחזיר התא למקום
         }
 
         public override int Count

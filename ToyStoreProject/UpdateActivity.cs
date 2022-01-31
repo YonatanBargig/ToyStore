@@ -24,7 +24,7 @@ namespace ToyStoreProject
         SportToy temp;
         WarToy temp1;
         Boxgames temp2;
-        string pw,pw1;
+        string pw1;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -42,14 +42,15 @@ namespace ToyStoreProject
             btncalculate.SetOnClickListener(this);
             btncancle = FindViewById<Button>(Resource.Id.btncancle);
             btncancle.SetOnClickListener(this);
+            //קליטה מאיזה רשימה
             pos = Intent.GetIntExtra("pos", -1);
             pos1 = Intent.GetIntExtra("pos1", -1);
             pos2 = Intent.GetIntExtra("pos2", -1);
-            if (pos != -1)
+            if (pos != -1)//בדיקה מאיזה רשימה
             {
                 temp = SportToyActivity.SporttoyList[pos];
-                pw = temp.GetPic();
-               // ivProduct.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, temp.GetPic()));
+                pw1 = temp.GetPic();
+                ivProduct.SetImageBitmap(Helper.Base64ToBitmap(pw1));
                 tvAge.Text = temp.GetAge().ToString();
                 tvTitle.Text = temp.GetName();
                 tvPrice.Text = temp.GetPrice().ToString();
@@ -59,8 +60,8 @@ namespace ToyStoreProject
            else if (pos1 != -1)
             {
                 temp1 = WarToyActivity.WarToyList[pos1];
-                pw = temp1.GetPic();
-               // ivProduct.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, temp1.GetPic()));
+                pw1 = temp1.GetPic();
+                ivProduct.SetImageBitmap(Helper.Base64ToBitmap(pw1));
                 tvAge.Text = temp1.GetAge().ToString();
                 tvTitle.Text = temp1.GetName();
                 tvPrice.Text = temp1.GetPrice().ToString();
@@ -70,18 +71,13 @@ namespace ToyStoreProject
             {
                 temp2 = BoxGamesActivity.boxgamesList[pos2];
                 pw1 = temp2.GetPic();
-              //  ivProduct = Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, Helper.Base64ToBitmap(pw1));
+               ivProduct.SetImageBitmap(Helper.Base64ToBitmap(pw1));
                 tvAge.Text = temp2.GetAge().ToString();
                 tvTitle.Text = temp2.GetName();
                 tvPrice.Text = temp2.GetPrice().ToString();
                 tvpayment.Text = "0";
             }
-            /*pw = temp.GetPic();
-            ivProduct.SetImageBitmap(Android.Graphics.BitmapFactory.DecodeResource(Application.Context.Resources, temp.GetPic()));
-            tvAge.Text = temp.GetAge().ToString();
-            tvTitle.Text = temp.GetName();
-            tvPrice.Text = temp.GetPrice().ToString();
-            tvpayment.Text = "0";*/
+           
         }
         public void OnClick(View v)
         {
@@ -90,20 +86,20 @@ namespace ToyStoreProject
                 Intent intent = new Intent(this, typeof(SportToyActivity));
                 StartActivity(intent);
             }
-            if (btncalculate == v)
+            if (btncalculate == v)//חישוב הכמות
             {
-                double x = double.Parse(tvPrice.Text);
-                double y = double.Parse(etamount.Text);
+                int x = int.Parse(tvPrice.Text);
+                int y = int.Parse(etamount.Text);
                 tvpayment.Text = (x * y).ToString();
             }
-            if (btnaddtomylist == v)
+            if (btnaddtomylist == v)//העברת עצמים לרשימת קניות
             {
-                Intent intent = new Intent(this, typeof(CartListActivty));
-                double p = double.Parse(tvpayment.Text);
-                intent.PutExtra("title", tvTitle.Text);
-                intent.PutExtra("age", tvAge.Text);
-                intent.PutExtra("pic", pw1);
-                intent.PutExtra("price", p.ToString());
+                Intent intent = new Intent(this, typeof(ShopingCartActivity));
+                int p = int.Parse(tvpayment.Text);
+                 intent.PutExtra("pos",pos);
+                intent.PutExtra("pos1", pos1);
+                intent.PutExtra("pos2", pos2);
+                intent.PutExtra("price1", p);          
                 StartActivity(intent);
             }
         }

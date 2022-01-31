@@ -19,6 +19,7 @@ namespace ToyStoreProject
     [Activity(Label = "LoginActivity")]
     public class LoginActivity : Activity
     {
+        public static string y;
         EditText txtusername;
         EditText txtPassword;
         Button btncreate;
@@ -34,26 +35,29 @@ namespace ToyStoreProject
             btnsign.Click += Btnsign_Click;
             btncreate.Click += Btncreate_Click; ;
             CreateDB();
-            // Create your application here
+           
         }
 
-        private void Btncreate_Click(object sender, EventArgs e)
+        private void Btncreate_Click(object sender, EventArgs e)//מעבר להרשמה
         {
             StartActivity(typeof(RegisterActivity));
         }
 
-        private void Btnsign_Click(object sender, EventArgs e)
+        private void Btnsign_Click(object sender, EventArgs e)//כניסת משתמש ובדיקה אם הוא בדאטה בייס
         {
             try
             {
                 string dpPath = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "user.db3"); //Call Database  
                 var db = new SQLiteConnection(dpPath);
                 var data = db.Table<LoginTable>(); //Call Table  
-                var data1 = data.Where(x => x.username == txtusername.Text && x.password == txtPassword.Text).FirstOrDefault(); //Linq Query  
+                var data1 = data.Where(x => x.username == txtusername.Text && x.password == txtPassword.Text).FirstOrDefault(); //שאילתת לינק 
                 if (data1 != null)
                 {
-                    Toast.MakeText(this, "Login Success", ToastLength.Short).Show();
+
+                   Toast.MakeText(this, "Login Success", ToastLength.Short).Show();
+                    y = txtusername.Text;
                     StartActivity(typeof(CustomerActivity));
+
                 }
                 else
                 {
@@ -66,7 +70,7 @@ namespace ToyStoreProject
             }
         }
 
-        private string CreateDB()
+        private string CreateDB()//יצירת הדאטה בייס
         {
             var output = "";
             output += "Creating Databse if it doesnt exists";

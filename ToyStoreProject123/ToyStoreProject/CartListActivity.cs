@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -18,15 +19,16 @@ namespace ToyStoreProject
     public class CartListActivty : Activity, ListView.IOnItemLongClickListener
     {
         public static List<Toy> CartList { get; set; }
-
+        
         ListView lvmylist;
         TextView payment;
         CartAdapter listadapter;
-        public static List<Toy> lvmklist { get; set; }
+        public static List<Toy> lvmklist;
         string pic = "";
         int h = 0, j =0 ,k =0;
         string age = "", name = "", price = "0", username = "";
         Toy t;
+        Bitmap bitmap;
        // public static string dbname = "dbTest10";
        // string path;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -35,7 +37,7 @@ namespace ToyStoreProject
 
             // Create your application here
             SetContentView(Resource.Layout.CartList);
-           // CartList = Getalltoys();
+            
             //הצהרה על המשתנים
             lvmylist = FindViewById<ListView>(Resource.Id.lvmylist);
             payment = FindViewById<TextView>(Resource.Id.payment);
@@ -46,7 +48,8 @@ namespace ToyStoreProject
             age = Intent.GetStringExtra("age");
             j = int.Parse(price);
             k = int.Parse(age);
-            t = new Toy("",name, j, "", k);
+            //bitmap = Helper.Base64ToBitmap(pic);
+            t = new Toy(name, j, pic, k);
            /* path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), dbname);
             var db = new SQLiteConnection(path);//create db object
             db.CreateTable<Toy>();*/
@@ -54,18 +57,19 @@ namespace ToyStoreProject
            var db = new SQLiteConnection(Helper.Path());
             db.CreateTable<Toy>();//יצירת הטבלה
             db.Insert(t);//הוספת השורה לטבלה
+            CartList = Getalltoys();
+           
+            /* string strsql = string.Format("SELECT * FROM toys");//בוחר מתוך הטבלה את כל השורות
+             var ptrs = db.Query<Toy>(strsql);
+             CartList = new List<Toy>();
+             if (ptrs.Count > 0)
+             {
+                 foreach (var item in ptrs)
+                 {
+                     CartList.Add(item);//מוסיף לרשימה
+                 }*/
+
             
-            string strsql = string.Format("SELECT * FROM toys");//בוחר מתוך הטבלה את כל השורות
-            var ptrs = db.Query<Toy>(strsql);
-            CartList = new List<Toy>();
-            if (ptrs.Count > 0)
-            {
-                foreach (var item in ptrs)
-                {
-                    CartList.Add(item);//מוסיף לרשימה
-                }
-            
-               // lvmklist = Getalltoys();
             listadapter = new CartAdapter(this, CartList);
             lvmylist.Adapter = listadapter;
             lvmylist.OnItemLongClickListener = this;
@@ -77,12 +81,12 @@ namespace ToyStoreProject
             payment.Text = h.ToString();
             //username = Intent.GetStringExtra("username");
         }
-        /*public List<Toy> Getalltoys()
+        public List<Toy> Getalltoys()
         {//מראה את כל הרשימה ששמורה בטבלה
             var db = new SQLiteConnection(Helper.Path());
             string strsql = string.Format("SELECT * FROM toys");//בוחר מתוך הטבלה את כל השורות
             var ptrs = db.Query<Toy>(strsql);
-            lvmklist = new List<Toy>();
+           List<Toy> lvmklist = new List<Toy>();
             if (ptrs.Count > 0)
             {
                 foreach (var item in ptrs)
@@ -90,7 +94,7 @@ namespace ToyStoreProject
                     lvmklist.Add(item);//מוסיף לרשימה
                 }
             }
-           */ //return lvmklist;//מציג את הרשימה
+           return lvmklist;//מציג את הרשימה
         }
         public bool OnItemLongClick(AdapterView parent, View view, int position, long id)
         {//מחיקת המוצר ברגע שלוחצים לחיצה ארוכה

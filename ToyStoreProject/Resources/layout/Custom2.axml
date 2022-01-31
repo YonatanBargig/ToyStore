@@ -44,7 +44,7 @@
 		android:gravity="center"
 		android:layout_weight="1"
 		android:layout_marginTop="8dp"
-		android:textColor="#1E90FF" 
+		android:textColor="#FF0000" 
 	/>
 	<TextView
 		android:id="@+id/tvm"
@@ -55,7 +55,7 @@
 		android:gravity="center"
 		android:layout_weight="1"
 		android:layout_marginTop="8dp"
-		android:textColor="#FF1493" 
+		android:textColor="#FF0000" 
 	/>
 	<TextView
 		android:id="@+id/tvmax"
@@ -66,7 +66,7 @@
 		android:gravity="center"
 		android:layout_weight="1"
 		android:layout_marginTop="8dp"
-		android:textColor="#1E90FF" 
+		android:textColor="#FF0000" 
 	/>
 	<TextView
 		android:id="@+id/tvPrice"

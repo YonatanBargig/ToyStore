@@ -14,7 +14,7 @@ using SQLite;
 
 namespace ToyStoreProject
 {
-   // [Table("SportToy")]
+  
     public class SportToy : Toy
     {
 
@@ -40,9 +40,5 @@ namespace ToyStoreProject
             this.sporttype = type;
         }
 
-       /* public override string Tostring()
-        {
-            return ("sport toy" + this.name + "this price is" + this.price);
-        }*/
     }
 }

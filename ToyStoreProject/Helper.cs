@@ -17,22 +17,16 @@ namespace ToyStoreProject
 {
      class Helper
     {
-        public static string dbname = "dbTest1";
-       // public static string shopcart = "shopcart";
+        public static string dbname = "dbTest1";     
         public Helper()
         {
         }
-        public static string Path()
+        public static string Path()//פעולת המסלול שבו ישר הדאטא בייס
         {
             string path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), Helper.dbname);
             return path;
-        }
-      /*  public static string Path_Shopingcart()
-        {
-            string path = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), Helper.shopcart);
-            return path;
-        }*/
-        public static string BitmapToBase64(Bitmap bitmap)
+        }   
+        public static string BitmapToBase64(Bitmap bitmap)//מביט מפ לסטרינג
         {
             string str = "";
             using (var stream = new MemoryStream())
@@ -44,7 +38,7 @@ namespace ToyStoreProject
             return str;
         }
 
-        public static Bitmap Base64ToBitmap(string base64String)
+        public static Bitmap Base64ToBitmap(string base64String)//מסטרינג לביטמפ המרה
         {
             byte[] imageAsBytes = Base64.Decode(base64String, Base64Flags.Default);
             return BitmapFactory.DecodeByteArray(imageAsBytes, 0, imageAsBytes.Length);

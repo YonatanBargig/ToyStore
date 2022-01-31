@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+	android:background="@drawable/Shhhhss">
 	<TextView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -13,22 +14,58 @@
 	<Button
 		android:layout_width="200dp"
 		android:layout_height="wrap_content"
+		android:layout_marginTop="150dp"
 		android:text="SPORT TOY"
+		android:layout_marginLeft="90dp"
+	    android:layout_marginRight="90dp"
 		android:textSize="30sp"
+        android:fontFamily="casual"
+        android:background="#fff"
 		android:textColor="#000000"
 		android:id="@+id/btnsporttoy"/>
 	<Button
 		android:layout_width="200dp"
 		android:layout_height="wrap_content"
+		android:layout_marginLeft="90dp"
+	    android:layout_marginRight="90dp"
 		android:text="WAR TOY"
 		android:textSize="30sp"
+        android:fontFamily="casual"
+        android:background="#fff"
 		android:textColor="#000000"
 		android:id="@+id/btnwartoy"/>
 	<Button
 		android:layout_width="200dp"
 		android:layout_height="wrap_content"
+		android:layout_marginLeft="90dp"
+	    android:layout_marginRight="90dp"
 		android:text="BOX GAMES"
 		android:textSize="30sp"
 		android:textColor="#000000"
+        android:fontFamily="casual"
+        android:background="#fff"
 		android:id="@+id/btnsboxgames"/>
+	    <Button
+		android:layout_width="210dp"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="90dp"
+	    android:layout_marginRight="90dp"
+		android:text="Shoping Cart"
+		android:textSize="30sp"
+		android:textColor="#000000"
+        android:fontFamily="casual"
+        android:background="#fff"
+		android:id="@+id/btncart"/>
+	<Button
+		android:layout_width="200dp"
+		android:layout_height="wrap_content"
+		android:text="About Us"
+		android:layout_marginLeft="90dp"
+	    android:layout_marginRight="90dp"
+		android:textSize="30sp"
+        android:fontFamily="casual"
+        android:background="#fff"
+		android:textColor="#000000"
+		android:id="@+id/btnAbout"/>
+
 </LinearLayout>

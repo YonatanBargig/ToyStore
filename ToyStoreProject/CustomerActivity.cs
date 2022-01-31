@@ -15,7 +15,7 @@ namespace ToyStoreProject.Resources.layout
     [Activity(Label = "CustomerActivity")]
     public class CustomerActivity : Activity
     {
-        Button btnSporttoy,btnboxgames, btnwartoy;
+        Button btnSporttoy,btnboxgames, btnwartoy, btnAboutUs,btnCart;
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,6 +29,22 @@ namespace ToyStoreProject.Resources.layout
             btnboxgames.Click += Btnboxgames_Click;
             btnwartoy = FindViewById<Button>(Resource.Id.btnwartoy);
             btnwartoy.Click += Btnwartoy_Click;
+            btnAboutUs = FindViewById<Button>(Resource.Id.btnAbout);
+            btnAboutUs.Click += btnAboutUs_Click;
+            btnCart = FindViewById<Button>(Resource.Id.btncart);
+            btnCart.Click += btnCart_Click;
+        }
+
+        private void btnCart_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(ShopingCartActivity));
+            StartActivity(intent);
+        }
+
+        private void btnAboutUs_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(AboutUSActivity));
+            StartActivity(intent);
         }
 
         private void Btnwartoy_Click(object sender, EventArgs e)

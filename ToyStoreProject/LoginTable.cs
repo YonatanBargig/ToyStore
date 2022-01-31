@@ -21,10 +21,16 @@ namespace ToyStoreProject.Resources
 
         [MaxLength(25)]
 
-        public string username { get; set; }
+        public string username { get; set; }//שם משתמש
 
         [MaxLength(15)]
 
-        public string password { get; set; }
+        public string creditcard { get; set; }//מספר כרטיס אשראי
+
+
+        [MaxLength(15)]
+
+        public string password { get; set; }//סיסמא
+        
     }
 }

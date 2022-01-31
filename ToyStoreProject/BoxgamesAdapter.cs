@@ -13,10 +13,11 @@ using Android.Widget;
 
 namespace ToyStoreProject
 {
-    class BoxgamesAdapter : BaseAdapter<Boxgames>
+    class BoxgamesAdapter : BaseAdapter<Boxgames>//לוקח רשימה ומחלק אותה לתאים לפי תכונות
     {
-        Android.Content.Context context;
-        List<Boxgames> objects;
+        
+        Android.Content.Context context;//מייצג את האקטיביטי
+        List<Boxgames> objects;//רשימה של אוביקטים
         public BoxgamesAdapter(Android.Content.Context context, System.Collections.Generic.List<Boxgames> objects)
         {
 
@@ -46,13 +47,13 @@ namespace ToyStoreProject
 
         }
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override View GetView(int position, View convertView, ViewGroup parent)//הפעולה שיוצרת את התאים של הרשימה
         {
-            // LayoutInflater layoutInflater = LayoutInflater.From(context);
+           
             Android.Views.LayoutInflater layoutInflater = ((BoxGamesActivity )context).LayoutInflater;
 
-            Android.Views.View view = layoutInflater.Inflate(Resource.Layout.Custom2, parent, false);
-
+            Android.Views.View view = layoutInflater.Inflate(Resource.Layout.Custom2, parent, false);//מנפח את התא
+            //מצהיר על התכונות
             TextView tvTitle = view.FindViewById<TextView>(Resource.Id.tvName);
 
             TextView tvmin = view.FindViewById<TextView>(Resource.Id.tvmin);
@@ -65,12 +66,12 @@ namespace ToyStoreProject
 
             ImageView ivProduct = view.FindViewById<ImageView>(Resource.Id.ivProduct);
 
-            Boxgames temp = objects[position];
+            Boxgames temp = objects[position];//שולף את האיבר במקום הפוסישין
 
             if (temp != null)
 
             {
-
+                //אם התנאי מתקיים אז הוא מקבל ומציג את התכונות
                 Bitmap bitmap = Helper.Base64ToBitmap(temp.bitmap);
                 ivProduct.SetImageBitmap(bitmap);
 
@@ -86,7 +87,7 @@ namespace ToyStoreProject
 
             }
 
-            return view;
+            return view;//מחזיר התא למקום
         }
 
         public override int Count

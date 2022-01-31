@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/toysto">
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="ListView"
+		android:id="@+id/tvtitle"/>
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text=""
+		android:id="@+id/username"
+		android:textSize="30dp"/>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="PAYMENT: "
+			android:textSize="30dp"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="30dp"
+			android:id="@+id/payment"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="$"
+			android:textSize="30dp"/>
+	</LinearLayout>
+	<ListView
+		android:layout_width="360dp"
+		android:layout_height="310dp"
+		android:id="@+id/lv" />
+	<ImageView
+		android:layout_width="75dp"
+		android:layout_height="75dp"
+	    android:id="@+id/iv" />
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+	<Button
+		android:layout_width="100dp"
+		android:layout_height="75dp"
+		android:text="order"
+		android:background="#00B"
+		android:textColor="#fff"
+		android:id="@+id/btnemail"/>
+	<Button
+		android:layout_width="100dp"
+		android:layout_height="75dp"
+		android:text="clean cart"
+		android:textColor="#fff"
+		android:background="#00B"
+		android:id="@+id/btnclean"/>
+	<Button
+		android:layout_width="100dp"
+		android:layout_height="75dp"
+		android:text="BACK TO MENU"
+		android:textColor="#fff"
+		android:background="#00B"
+		android:id="@+id/btnback"/>
+</LinearLayout>
+</LinearLayout>
